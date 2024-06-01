@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //create STATE widget
-class MatHomePage extends StatefulWidget{
+class MatHomePage extends StatefulWidget {
   const MatHomePage({super.key});
 
   @override
@@ -10,24 +10,22 @@ class MatHomePage extends StatefulWidget{
   }
 }
 
-
 //Extend State
-class _MatHomePageState extends State<MatHomePage>{
-double result = 0;
-final TextEditingController textEditingController = TextEditingController();
+class _MatHomePageState extends State<MatHomePage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
 
-void convert() {
-  setState(() {
-    result = double.parse(textEditingController.text)  * 1487.04;
-  });
-}
+  void convert() {
+    setState(() {
+      result = double.parse(textEditingController.text) * 1482.04;
+    });
+  }
 
-@override
- void dispose() {
+  @override
+  void dispose() {
     textEditingController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,22 +55,31 @@ void convert() {
               )),
           centerTitle: true,
           toolbarHeight: 25,
-        ),//light blue grey for background
+        ), //light blue grey for background
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("NGN - ₦${ result != 0 ? result.toStringAsFixed(3): result.toStringAsFixed(0)}",
+              Text(
+                "NGN - ₦${result != 0 ? result.toStringAsFixed(3) : result.toStringAsFixed(0)}",
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
                   color: Colors.white70,
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color.fromRGBO(17, 24, 39, 1),
+                ),
                 padding: const EdgeInsets.all(20),
                 margin: const EdgeInsets.all(5.0),
-                color: const Color.fromRGBO(17, 24, 39, 1), //dark blue gray
+
+                //dark blue gray
                 child: TextField(
                   controller: textEditingController,
                   style: const TextStyle(
@@ -85,8 +92,9 @@ void convert() {
                       fontSize: 10,
                     ),
                     prefixIcon: const Padding(
-                      padding:  EdgeInsets.only(left: 10, top: 8),
-                      child:  Text("\$",
+                      padding: EdgeInsets.only(left: 10, top: 8),
+                      child: Text(
+                        "\$",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -96,8 +104,8 @@ void convert() {
                     ),
                     prefixIconColor: Colors.white,
                     filled: true,
-                    fillColor: const Color.fromRGBO(
-                        31, 41, 55, 1), //dark blue gray for input area
+                    fillColor: const Color.fromRGBO(31, 41, 55, 1),
+                    //dark blue gray for input area
                     focusedBorder: border,
                     enabledBorder: border,
                   ),
@@ -112,27 +120,21 @@ void convert() {
                   onPressed: () {
                     convert();
                   },
-                  style:  ElevatedButton.styleFrom(
+                  style: ElevatedButton.styleFrom(
                     elevation: 15,
                     shadowColor: Colors.white70,
-                    shape:  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     backgroundColor: Colors.white,
                     foregroundColor: const Color.fromRGBO(31, 41, 55, 1),
                     minimumSize: const Size(35, 35),
                   ),
                   child: const Text("Convert"),
-                ),),
+                ),
+              ),
             ],
           ),
         ));
   }
 }
-
-
-
-// class MatHomePagee extends StatelessWidget {
-//   const MatHomePagee({super.key});
-//
-//   @override
-//
