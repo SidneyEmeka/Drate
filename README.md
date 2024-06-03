@@ -1,6 +1,7 @@
 # drate
 
 A Currency converter app.
+-Drate is built on flutter using dart.
 
 ## Getting Started
 
