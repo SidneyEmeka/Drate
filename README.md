@@ -2,6 +2,7 @@
 
 A Currency converter app.
 -Drate is built on flutter using dart.
+-Uses Api to fetch amd convert between currency rates
 
 ## Getting Started
 
