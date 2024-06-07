@@ -1,4 +1,8 @@
+import 'package:drate/widgets/currency_dropdown.dart';
 import 'package:flutter/material.dart';
+
+import '../functions/funcs.dart';
+import '../servers/utility.dart';
 
 //create STATE widget
 class MatHomePage extends StatefulWidget {
@@ -26,6 +30,22 @@ class _MatHomePageState extends State<MatHomePage> {
     textEditingController.dispose();
     super.dispose();
   }
+
+late Future<Allrates> apiResult;
+  late Future<Map> allcurrencies;
+  final formkey = GlobalKey<FormState>();
+
+  @override
+ void initState() {
+    super.initState();
+   setState(() {
+     apiResult = fetchrates();
+     allcurrencies = fetchcurrencies();
+   });
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +134,12 @@ class _MatHomePageState extends State<MatHomePage> {
                   ),
                 ),
               ),
+
+             const SizedBox(
+                height: 20.0,
+              ),
+
+
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: ElevatedButton(
