@@ -1,7 +1,6 @@
-import 'package:drate/pages/material_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:drate/pages/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:drate/pages/cupertino_page.dart';
+
 
 
 void main() {
@@ -13,20 +12,15 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      title: "Drate - Currency Converter",
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
       debugShowCheckedModeBanner: false,
-      home: MatHomePage(),
+      home: Home(),
     );
   }
 }
 
-class MyCupApp extends StatelessWidget {
-  const MyCupApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const CupertinoApp(
-      home: CupHomePage(),
-    );
-  }
-}
