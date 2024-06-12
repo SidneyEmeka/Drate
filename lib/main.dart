@@ -16,6 +16,7 @@ class Myapp extends StatelessWidget {
       title: "Drate - Currency Converter",
       theme: ThemeData(
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
       ),
       debugShowCheckedModeBanner: false,
       home: Home(),

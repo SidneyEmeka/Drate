@@ -15,7 +15,7 @@ class Vtwo extends StatefulWidget {
 
 class _VtwoState extends State<Vtwo> {
   TextEditingController amountController = TextEditingController();
-  String dropdownvalue1 = "NGN";
+  String dropdownvalue1 = "BTC";
   String dropdownvalue2 = "USD";
   String result = "...";
 
@@ -54,13 +54,11 @@ class _VtwoState extends State<Vtwo> {
             TextFormField(
               key: const Key("USD"),
               controller: amountController,
-              cursorColor: Colors.white,
+              cursorColor: Colors.white70,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                 hintText: "Enter Amount",
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                ),
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
               ),
               keyboardType: TextInputType.number,
             ),
@@ -166,35 +164,34 @@ class _VtwoState extends State<Vtwo> {
                 ),
               ),
             ),
-            // const SizedBox(
-            //   height: 15,
-            //),
             Container(
               alignment: Alignment.center,
-              child: Text(
-                result,
-                style: TextStyle(
-                  color: Colors.white70,
-                ),
-              ),
-            ),
-            Container(
-              child: Row(
+              child: Column(
                 children: [
-                  Expanded(flex: 1,
-                    child: Icon(Icons.info_outline,
-                      color: Colors.white70,),
-
-                  ),
-                  Expanded(flex: 4,
-                    child: Text("Drate aggregates and weighs exchanges from popular exchanges for this conversion. This is for informational purpose only",
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                    ),
+                    child: Text(
+                      result,
                       style: TextStyle(
                         color: Colors.white70,
-                      ),),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "1 $dropdownvalue1 = " +
+                        baseValue(
+                            widget.rates, "1", dropdownvalue1, dropdownvalue2) +
+                        " " +
+                        dropdownvalue2,
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
