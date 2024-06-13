@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'functions/fetchrates.dart';
+import '../functions/fetchrates.dart';
 
 class Vone extends StatefulWidget {
   const Vone({Key? key, required this.rates, required this.currencies})
@@ -14,13 +14,11 @@ class Vone extends StatefulWidget {
 }
 
 class _VoneState extends State<Vone> {
-
-
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
 
-    return  Container(
+    return Container(
       padding: EdgeInsets.only(
         top: 10,
         bottom: 10,
@@ -33,7 +31,6 @@ class _VoneState extends State<Vone> {
         border: Border(
           bottom: BorderSide(
             color: Colors.black,
-
           ),
         ),
       ),
@@ -41,36 +38,38 @@ class _VoneState extends State<Vone> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(flex: 1,
-            child: Text("USD/NGN " +  baseValue(
-                widget.rates, "1", "USD", "NGN"),
-            style: TextStyle(
-              fontSize: 8,
-              fontWeight: FontWeight.bold,
-            ),),
-          ),
-          Expanded(flex: 1,
-            child: Text("EUR/NGN " +  baseValue(
-                widget.rates, "1", "EUR", "NGN"),
+          Expanded(
+            flex: 1,
+            child: Text(
+              "USD/NGN " + baseValue(widget.rates, "1", "USD", "NGN"),
               style: TextStyle(
-                  fontSize: 8,
+                fontSize: 8,
                 fontWeight: FontWeight.bold,
-              ),),
+              ),
+            ),
           ),
-          Expanded(flex: 1,
-            child: Text("BTC/NGN " +  baseValue(
-                widget.rates, "1", "BTC", "NGN"),
+          Expanded(
+            flex: 1,
+            child: Text(
+              "EUR/NGN " + baseValue(widget.rates, "1", "EUR", "NGN"),
               style: TextStyle(
-                  fontSize: 8,
+                fontSize: 8,
                 fontWeight: FontWeight.bold,
-              ),),
+              ),
+            ),
           ),
-
-
-
+          Expanded(
+            flex: 1,
+            child: Text(
+              "BTC/NGN " + baseValue(widget.rates, "1", "BTC", "NGN"),
+              style: TextStyle(
+                fontSize: 8,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ],
       ),
     );
-
   }
 }

@@ -1,7 +1,7 @@
 import 'package:drate/functions/fetchrates.dart';
 import 'package:drate/models/allrates.dart';
-import 'package:drate/vone.dart';
-import 'package:drate/vtwo.dart';
+import 'package:drate/widgets/vone.dart';
+import 'package:drate/widgets/vtwo.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -73,98 +73,94 @@ class _HomeState extends State<Home> {
                   ));
                 }
                 return Center(
-                    child: FutureBuilder<Map>(
-                  future: allcurrencies,
-                  builder: (context, currSnapshot) {
-                    if (currSnapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(
-                              backgroundColor: Colors.black,
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Vone(rates: snapshot.data!.rates,
-                            currencies: currSnapshot.data!),
-
-
-                        Container(
-                          width: w,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 2,
-                            vertical: 2),
+                  child: FutureBuilder<Map>(
+                    future: allcurrencies,
+                    builder: (context, currSnapshot) {
+                      if (currSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                backgroundColor: Colors.black,
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Vone(
+                              rates: snapshot.data!.rates,
+                              currencies: currSnapshot.data!),
+                          Container(
+                              width: w,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 2, vertical: 2),
+                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              height: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: Colors.black,
+                                ),
+                                color: Colors.white,
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.asset(
+                                  "assets/images/gifs.GIF",
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Vtwo(
+                              rates: snapshot.data!.rates,
+                              currencies: currSnapshot.data!),
+                          Container(
                             margin: EdgeInsets.symmetric(
-                              horizontal: 20
+                              horizontal: 15,
                             ),
-                            height: 40,
+                            // width: w,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(10),
                               border: Border.all(
                                 color: Colors.black,
                               ),
-                              color: Colors.white,
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset("assets/images/gifs.GIF",
-                              fit: BoxFit.cover,
-                              ),
-                            )
-                        ),
-
-                        Vtwo(
-                            rates: snapshot.data!.rates,
-                            currencies: currSnapshot.data!),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 15,
-                          ),
-                          // width: w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Colors.black,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Icon(
-                                  Icons.info_outline,
-                                  color: Colors.grey.shade800,
-                                  size: 20,
-                                ),
-                              ),
-                              Expanded(
-                                flex: 6,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(
-                                    "Drate aggregates and weighs exchange rates from popular exchanges for this conversion. This is for informational purpose only",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.info_outline,
+                                    color: Colors.grey.shade800,
+                                    size: 20,
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ));
+                                Expanded(
+                                  flex: 6,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: Text(
+                                      "Drate aggregates and weighs exchange rates from popular exchanges for this conversion. This is for informational purpose only",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                );
               },
             ),
           ),

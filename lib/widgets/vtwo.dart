@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'functions/fetchrates.dart';
+import '../functions/fetchrates.dart';
 
 class Vtwo extends StatefulWidget {
   const Vtwo({Key? key, required this.rates, required this.currencies})
@@ -21,7 +21,7 @@ class _VtwoState extends State<Vtwo> {
 
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.width;
+   // var w = MediaQuery.of(context).size.width;
 
     return Container(
       margin: EdgeInsets.all(15),
@@ -93,8 +93,8 @@ class _VtwoState extends State<Vtwo> {
                           .map<DropdownMenuItem<String>>((value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child:
-                              Text(value, style: TextStyle(color: Colors.white)),
+                          child: Text(value,
+                              style: TextStyle(color: Colors.white)),
                         );
                       }).toList(),
                     ),
@@ -124,13 +124,15 @@ class _VtwoState extends State<Vtwo> {
                       items: widget.currencies.keys
                           .toSet()
                           .toList()
-                          .map<DropdownMenuItem<String>>((value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child:
-                              Text(value, style: TextStyle(color: Colors.white)),
-                        );
-                      }).toList(),
+                          .map<DropdownMenuItem<String>>(
+                        (value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value,
+                                style: TextStyle(color: Colors.white)),
+                          );
+                        },
+                      ).toList(),
                     ),
                   ),
                 ],
@@ -183,8 +185,8 @@ class _VtwoState extends State<Vtwo> {
                     ),
                     Text(
                       "1 $dropdownvalue1 = " +
-                          baseValue(
-                              widget.rates, "1", dropdownvalue1, dropdownvalue2) +
+                          baseValue(widget.rates, "1", dropdownvalue1,
+                              dropdownvalue2) +
                           " " +
                           dropdownvalue2,
                       style: TextStyle(
