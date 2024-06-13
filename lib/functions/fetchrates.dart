@@ -3,6 +3,7 @@ import '../models/allcurrencies.dart';
 import '../models/allrates.dart';
 import '../servers/utility.dart';
 
+//Api call function
 Future<Allrates> fetchrates() async {
   final response = await http.get(
       Uri.parse("https://openexchangerates.org/api/latest.json?app_id=$key"));
@@ -11,6 +12,8 @@ Future<Allrates> fetchrates() async {
   return result;
 }
 
+
+//Api call function
 Future<Map> fetchcurrencies() async {
   final response = await http.get(
     Uri.parse(

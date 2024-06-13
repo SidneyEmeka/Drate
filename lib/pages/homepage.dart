@@ -96,25 +96,26 @@ class _HomeState extends State<Home> {
                               rates: snapshot.data!.rates,
                               currencies: currSnapshot.data!),
                           Container(
-                              width: w,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 2, vertical: 2),
-                              margin: EdgeInsets.symmetric(horizontal: 20),
-                              height: 40,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                border: Border.all(
-                                  color: Colors.black,
-                                ),
-                                color: Colors.white,
+                            width: w,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 2, vertical: 2),
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: Colors.black,
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.asset(
-                                  "assets/images/gifs.GIF",
-                                  fit: BoxFit.cover,
-                                ),
-                              )),
+                              color: Colors.white,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset(
+                                "assets/images/gifs.GIF",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           Vtwo(
                               rates: snapshot.data!.rates,
                               currencies: currSnapshot.data!),
