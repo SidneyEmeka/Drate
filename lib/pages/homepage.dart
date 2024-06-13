@@ -51,9 +51,9 @@ class _HomeState extends State<Home> {
         height: h,
         width: w,
         padding: EdgeInsets.only(
-          top: 65,
-          left: 20,
-          right: 20,
+          top: 10,
+          // left: 20,
+          // right: 20,
         ),
         child: SingleChildScrollView(
           child: Form(
@@ -62,7 +62,15 @@ class _HomeState extends State<Home> {
               future: result,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: const CircularProgressIndicator());
+                  return Center(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                      ),
+                    ],
+                  ));
                 }
                 return Center(
                     child: FutureBuilder<Map>(
@@ -70,20 +78,55 @@ class _HomeState extends State<Home> {
                   builder: (context, currSnapshot) {
                     if (currSnapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(
+                              backgroundColor: Colors.black,
+                            ),
+                          ],
+                        ),
                       );
                     }
-
                     return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        Vone(rates: snapshot.data!.rates,
+                            currencies: currSnapshot.data!),
+
+
+                        Container(
+                          width: w,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 2,
+                            vertical: 2),
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 20
+                            ),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: Colors.black,
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset("assets/images/gifs.GIF",
+                              fit: BoxFit.cover,
+                              ),
+                            )
+                        ),
+
                         Vtwo(
                             rates: snapshot.data!.rates,
                             currencies: currSnapshot.data!),
-                        SizedBox(
-                          height: 15,
-                        ),
                         Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
                           // width: w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -107,7 +150,7 @@ class _HomeState extends State<Home> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(vertical: 5),
                                   child: Text(
-                                    "Drate aggregates and weighs rates from popular exchanges for this conversion. This is for informational purpose only",
+                                    "Drate aggregates and weighs exchange rates from popular exchanges for this conversion. This is for informational purpose only",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 12,
