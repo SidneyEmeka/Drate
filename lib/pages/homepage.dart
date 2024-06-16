@@ -1,8 +1,10 @@
 import 'package:drate/functions/fetchrates.dart';
 import 'package:drate/models/allrates.dart';
-import 'package:drate/widgets/vone.dart';
 import 'package:drate/widgets/vtwo.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/vone_scroll.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -29,9 +31,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-            //borderRadius: BorderRadius.circular(20),
-            ),
         title: Padding(
           padding: EdgeInsets.only(
             bottom: 0,
@@ -92,8 +91,7 @@ class _HomeState extends State<Home> {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Vone(
-                              rates: snapshot.data!.rates,
+                          VoneScroll(rates: snapshot.data!.rates,
                               currencies: currSnapshot.data!),
                           Container(
                             width: w,
@@ -116,6 +114,8 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
+
+
                           Vtwo(
                               rates: snapshot.data!.rates,
                               currencies: currSnapshot.data!),
