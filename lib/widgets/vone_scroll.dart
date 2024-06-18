@@ -1,7 +1,4 @@
-import 'package:drate/servers/utility.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../functions/fetchrates.dart';
 
 class VoneScroll extends StatefulWidget {

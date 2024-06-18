@@ -51,8 +51,7 @@ class _HomeState extends State<Home> {
         width: w,
         padding: EdgeInsets.only(
           top: 10,
-          // left: 20,
-          // right: 20,
+
         ),
         child: SingleChildScrollView(
           child: Form(
@@ -60,7 +59,7 @@ class _HomeState extends State<Home> {
             child: FutureBuilder<Allrates>(
               future: result,
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
+                if (snapshot.connectionState == ConnectionState.waiting ) {
                   return Center(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,6 +69,16 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ));
+                }
+                if (snapshot.hasError) {
+                  return const Center(
+                    child: Text(
+                      "Unable to Connect",
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.deepOrange),
+                    ),
+                  );
                 }
                 return Center(
                   child: FutureBuilder<Map>(
@@ -85,6 +94,16 @@ class _HomeState extends State<Home> {
                                 backgroundColor: Colors.black,
                               ),
                             ],
+                          ),
+                        );
+                      }
+                      if (snapshot.hasError) {
+                        return const Center(
+                          child: Text(
+                            "Unable to Connect",
+                            style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.deepOrange),
                           ),
                         );
                       }
