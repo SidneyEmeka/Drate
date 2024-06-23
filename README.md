@@ -2,4 +2,4 @@
 
 A Currency converter app. <br>
 -Drate is built on flutter using dart.<br>
--Uses Api to fetch, weigh and convert between currency rates
+-Drate weighs and convert between real time currency rates
